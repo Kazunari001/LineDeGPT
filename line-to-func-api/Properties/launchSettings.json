@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "line_to_func_api": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7228",
+      "launchBrowser": false
+    }
+  }
+}
