@@ -9,6 +9,8 @@ namespace ChatBot.FromLine
 {
     public class ToGPTServer
     {
+        private static HttpClient client = new HttpClient();
+        private static HttpRequestMessage request = new HttpRequestMessage();
         /// <summary>
         /// GPTサーバに向けてAPIリクエストを送る
         /// </summary>
@@ -19,9 +21,6 @@ namespace ChatBot.FromLine
         {
             try
             {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage();
-
                 var requestBody = JsonConvert.SerializeObject(text);
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(Environment.GetEnvironmentVariable("APIServerUrl"));

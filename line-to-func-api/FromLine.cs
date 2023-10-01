@@ -16,6 +16,7 @@ namespace ChatBot.FromLine
 {
     public static class FromLine
     {
+        private static HttpClient client = new HttpClient();
         [FunctionName("FromLine")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
@@ -43,7 +44,6 @@ namespace ChatBot.FromLine
                 var responseContent = JsonConvert.SerializeObject(responseBody);
                 log.LogInformation(responseContent);
 
-                var client = new HttpClient();
                 var request = new HttpRequestMessage
                 {
                     Method = HttpMethod.Post,

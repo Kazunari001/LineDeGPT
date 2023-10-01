@@ -15,11 +15,10 @@ namespace ChatBot.ToGPT.Utility
         private static readonly string model = Environment.GetEnvironmentVariable("GPTModel");
         private static readonly Uri url = new(Environment.GetEnvironmentVariable("GPTURL"));
         private static readonly string gptKey = Environment.GetEnvironmentVariable("GPTAPIKey");
+        private static HttpClient client = new HttpClient();
+        private static HttpRequestMessage request = new HttpRequestMessage();
         public static async Task<string> ToGPT(ILogger log, string message)
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage();
-
             var body = new GPTRequestModel{
                 model = model,
                 messages = new List<Model.Request.Message>
